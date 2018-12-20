@@ -1,0 +1,43 @@
+<body>
+  <h1>Yelp API</h1>
+  <div>
+    <select [(ngModel)]='locationModel.price'>
+      <option value='1'>$</option>
+      <option value='2'>$$</option>
+      <option value='3'>$$$</option>
+      <option value='4'>$$$$</option>
+    </select>
+    <input [(ngModel)]='locationModel.city'>
+    <select [(ngModel)]='locationModel.state'>
+      <option *ngFor='let state of states' [value]='state'>{{state}}</option>
+    </select>
+    <button (click)='search()'>Submit</button>
+  </div>
+
+  <div *ngIf='restaurant'>
+    <div>
+      <div>
+        <p>{{restaurant.name}}</p>
+        <p>{{restaurant.location.address1}}
+          <br>
+          {{restaurant.location.city}}, {{restaurant.location.state}} {{restaurant.location.zip_code}}</p>
+        <p>{{restaurant.display_phone}}</p>
+        <p>{{delivery}}</p>
+      </div>
+      <img src='assets/stars/stars_regular_0.png' *ngIf='restaurant.rating === 0'>
+      <img src='assets/stars/stars_regular_0_half.png' *ngIf='restaurant.rating === 0.5'>
+      <img src='assets/stars/stars_regular_1.png' *ngIf='restaurant.rating === 1'>
+      <img src='assets/stars/stars_regular_1_half.png' *ngIf='restaurant.rating === 1.5'>
+      <img src='assets/stars/stars_regular_2.png' *ngIf='restaurant.rating === 2'>
+      <img src='assets/stars/stars_regular_2_half.png' *ngIf='restaurant.rating === 2.5'>
+      <img src='assets/stars/stars_regular_3.png' *ngIf='restaurant.rating === 3'>
+      <img src='assets/stars/stars_regular_3_half.png' *ngIf='restaurant.rating === 3.5'>
+      <img src='assets/stars/stars_regular_4.png' *ngIf='restaurant.rating === 4'>
+      <img src="assets/stars/stars_regular_4_half.png" *ngIf='restaurant.rating === 4.5'>
+      <img src='assets/stars/stars_regular_5.png' *ngIf='restaurant.rating === 5'>
+    </div>
+    <div>
+      <img [src]='restaurant.image_url'>
+    </div>
+  </div>
+</body>
